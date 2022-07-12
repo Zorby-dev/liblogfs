@@ -4,11 +4,11 @@
 
 using namespace std;
 
-esp_err_t spiffs::mount(spiffs::Spiffs *fs) {
-    return esp_vfs_spiffs_register(&fs->config);
+esp_err_t Spiffs::mount() {
+    return esp_vfs_spiffs_register(&this->config);
 }
 
-spiffs::Spiffs::Spiffs(const char *prefix) {
+Spiffs::Spiffs(const char *prefix) {
     this->config = {
       .base_path = prefix,
       .partition_label = NULL,
@@ -17,6 +17,6 @@ spiffs::Spiffs::Spiffs(const char *prefix) {
     };
 }
 
-esp_err_t spiffs::Spiffs::unmount() {
+esp_err_t Spiffs::unmount() {
     return esp_vfs_spiffs_unregister(this->config.partition_label);
 }
