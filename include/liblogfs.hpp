@@ -1,15 +1,16 @@
 #pragma once
 
 #include "esp_spiffs.h"
+#include "esp_err.h"
 
 namespace spiffs {
     class Spiffs {
     private:
-        esp_vfs_spiffs_conf_t config;
     public:
-        Spiffs(esp_vfs_spiffs_conf_t config);
-        void unmount();
+        esp_vfs_spiffs_conf_t config;
+        Spiffs(const char *prefix);
+        esp_err_t unmount();
     };
 
-    Spiffs mount(const char* prefix);
+    esp_err_t mount(spiffs::Spiffs *fs);
 }
