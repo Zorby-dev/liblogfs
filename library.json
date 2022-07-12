@@ -1,0 +1,32 @@
+{
+  "name": "liblogfs",
+  "keywords": "fs, esp32",
+  "description": "An extension to Logic_library for interacting with the file system.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zorby-dev/liblogfs"
+  },
+  "authors": [
+    {
+      "name": "Zorby",
+      "email": "zorby.exe@gmail.com",
+      "url": "https://github.com/Zorby-dev",
+      "maintainer": true
+    }
+  ],
+  "version": "0.1.0",
+  "frameworks": ["arduino", "espidf"],
+  "platforms": "espressif32",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "owner": "roboticsbrno",
+      "name": "Logic_library",
+      "version": "https://github.com/RoboticsBrno/Logic_library/archive/refs/heads/main.zip"
+    }
+  ],
+  "build": {
+    "flags": "-std=gnu++17",
+    "unflags": "-std=gnu++11"
+  }
+}
