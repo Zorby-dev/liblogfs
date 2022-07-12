@@ -16,14 +16,7 @@ spiffs::Spiffs spiffs::mount(const char* prefix) {
     esp_err_t ret = esp_vfs_spiffs_register(&conf);
 
     if (ret != ESP_OK) {
-        if (ret == ESP_FAIL) {
-            cout << "Failed to mount or format filesystem" << endl;
-        } else if (ret == ESP_ERR_NOT_FOUND) {
-            cout << "Failed to find SPIFFS partition" << endl;
-        } else {
-            cout << "Failed to initialize SPIFFS (" << esp_err_to_name(ret) << ")" << endl;
-        }
-        return;
+        throw ret;
     }
 
     return spiffs::Spiffs(conf);
