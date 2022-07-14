@@ -3,6 +3,7 @@
 #include "esp_spiffs.h"
 #include "esp_err.h"
 #include <string>
+#include <vector>
 
 class Spiffs {
 private:
@@ -13,4 +14,12 @@ public:
     esp_err_t unmount();
 };
 
-std::string readFileString(const char *fileName);
+class File {
+private:
+public:
+    std::string path;
+
+    File(const char *path);
+    std::string readString();
+    std::vector<unsigned char> readBytes();
+};
